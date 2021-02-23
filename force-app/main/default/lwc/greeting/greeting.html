@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="Greeting" icon-name="standard:lightning_component">  
+        <div>
+        <lightning-input type="text" value={greet} label="Greeting Message" onchange={handleChange}>
+
+        </lightning-input>
+            <b>
+                <h1>Hello  {greet}</h1>
+            </b>
+        </div>
+        <c-view-source source="lwc/greeting" slot="footer">
+        </c-view-source>
+    </lightning-card>
+    
+</template>

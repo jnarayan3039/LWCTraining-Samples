@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Room Information" icon-name="utility:notebook">
+        <div>
+            <!-- <lightning-tile label={roomDetail.roomNumber} href="/path/to/somewhere">
+                <p class="slds-truncate" title={roomDetail.capacity}>Room Capacity: {roomDetail.capacity}</p>
+                <p class="slds-truncate" title={roomDetail.resources}>Resources: {roomDetail.resources}</p>
+            </lightning-tile> -->
+            <slot name="room"></slot>
+            <slot></slot>
+        </div>
+    </lightning-card>
+</template>

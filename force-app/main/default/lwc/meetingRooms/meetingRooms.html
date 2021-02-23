@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Meeting Rooms" icon-name="standard:lightning_component">
+        <div>
+            <lightning-input type="checkbox" label="Show Details" onchange={handleChange}></lightning-input>
+            <template for:each={rooms} for:item="room">
+                <c-meeting-room key={room.roomNumber} room-detail={room}>
+
+                </c-meeting-room>
+            </template>
+            <lightning-button label="Change Rooms" onclick={handleClick}></lightning-button>
+        </div>
+        <c-view-source source="lwc/meetingRooms" slot="footer">
+            Refer to the meetingRoom component that is referenced in this component
+        </c-view-source>
+    </lightning-card>
+</template>

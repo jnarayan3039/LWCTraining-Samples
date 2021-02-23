@@ -1,0 +1,45 @@
+<template>
+    <div class="header slds-var-p-around_medium">
+        <div class="slds-grid">
+            <div class="slds-col slds-size_1-of-3">
+                Score: {score}
+            </div> 
+            <div class="slds-col slds-size_1-of-3 slds-text-align_center">
+                Speed: {displaySpeed}x
+            </div> 
+            <div class="slds-col slds-size_1-of-3 slds-text-align_center">
+                High Score: {highScore}
+            </div> 
+        </div>
+    </div>
+    <div class="game-container">
+        <div class="game-play">
+            <template for:each={gameBlocks} for:item="block">
+                <div class={block.class} data-reference={block.id} key={block.id}>
+                    &nbsp;
+                </div>
+            </template>
+        </div>
+       <template if:true={showOverlay}>
+           <div class="overlay">
+               <div class="overlay-content">
+                   <template if:true={gameOver}>
+                       <div class="slds-text-heading_large">Gane Over!</div>
+                       <br />
+                       <button class="slds-button slds-button_brand" onclick={resetGame}>Play Again</button>
+                   </template>
+                   <template if:false={gameOver}>
+                       <div class="slds-text-heading_medium">
+                           Use Arrow Keys to move the snake
+                       </div>
+                       <br/>
+                       <button class="slds-button slds-button_brand" onclick={startGame}>Start Game</button>
+                   </template>
+               </div>
+           </div>
+       </template>
+    </div>
+    <c-view-source source="lwc/snakeGame" slot="footer">
+        Refer to the meetingRoomSlot component that is referenced in this component
+    </c-view-source>
+</template>

@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Meeting Rooms Events" icon-name="standard:lightning_component">
+        <div>
+            <lightning-layout>
+                <lightning-layout-item size="8">
+                    <template for:each={rooms} for:item="room">
+                        <c-meeting-room-events key={room.roomNumber} room-detail={room} ontileclick={handleTileClick}>
+        
+                        </c-meeting-room-events>
+                    </template>
+                </lightning-layout-item>
+                <lightning-layout-item size="4">
+                    <div><lightning-formatted-text value={meetingInfo}></lightning-formatted-text></div>
+                </lightning-layout-item>
+            </lightning-layout>
+           
+            
+        </div>
+        <c-view-source source="lwc/meetingRoomsEvents" slot="footer">
+            Refer to the meetingRoomEvents component that is referenced in this component
+        </c-view-source>
+    </lightning-card>
+</template>

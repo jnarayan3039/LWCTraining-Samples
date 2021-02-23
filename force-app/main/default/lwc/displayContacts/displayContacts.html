@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Paginate Contacts" icon-name="standard:lightning_component">
+        <div>
+            <template for:each={contactsToDisplay} for:item="contact">
+                <c-contact-info key={contact.email} contact={contact}></c-contact-info>
+            </template>
+            
+            <c-paginator onprevious={previousHandler} onnext={nextHandler}></c-paginator>
+        </div>
+        <c-view-source source="lwc/displayContacts" slot="footer">
+            Refer to Paginator and ContactInfo components that are used in this example
+        </c-view-source>
+    </lightning-card>
+</template>

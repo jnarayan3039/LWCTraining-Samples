@@ -1,0 +1,39 @@
+<!--
+  @description       : 
+  @author            : Jayaprakash Thatiparthi
+  @group             : 
+  @last modified on  : 02-10-2021
+  @last modified by  : Jayaprakash Thatiparthi
+  Modifications Log 
+  Ver   Date         Author                    Modification
+  1.0   02-10-2021   Jayaprakash Thatiparthi   Initial Version
+-->
+<template>
+   <lightning-card title="Third Party Library - Sheet JS">
+       <div>
+       <lightning-input type="file" name="uploadFile" label="Upload File" onchange={handleFileUploaded}>
+
+       </lightning-input>
+       <table class="dynamic">
+
+       </table>
+        <table>
+            <tr class="header">
+                <th>Day</th>
+                <th>Sub Topic</th>
+                <th>Youtube Video</th>
+            </tr>
+            <template for:each={videos} for:item="video">
+                <tr key={video.YoutubeVideo}>
+                    <td>{video.Day}</td>
+                     <td>{video.SubTopic}</td>
+                     <td><a class="slds-text-link" href={video.YoutubeVideo} target="source">View Source</a></td>   
+                </tr>
+                    
+            </template>
+        </table>
+    </div>
+    <c-view-source source="lwc/importFromExcel" slot="footer">
+    </c-view-source>
+   </lightning-card> 
+</template>

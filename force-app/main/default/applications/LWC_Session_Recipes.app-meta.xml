@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>LWC Session Recipes</label>
+    <navType>Standard</navType>
+    <tabs>standard-Feed</tabs>
+    <tabs>Basic_Recipes</tabs>
+    <tabs>HTML_Templates</tabs>
+    <tabs>Calculator</tabs>
+    <tabs>Parent_Child_Communication</tabs>
+    <tabs>Snake_Game</tabs>
+    <tabs>Custom_Events</tabs>
+    <tabs>Importing_JS_Modules</tabs>
+    <tabs>Static_Resources</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

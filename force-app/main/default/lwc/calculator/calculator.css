@@ -1,0 +1,8 @@
+.tbSpace
+{
+  table-layout:fixed;
+  width:40%;
+  overflow:hidden;
+  word-wrap:break-word;
+  font-size:20px;
+}

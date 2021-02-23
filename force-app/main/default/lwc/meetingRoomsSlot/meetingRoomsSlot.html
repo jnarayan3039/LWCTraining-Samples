@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Meeting Rooms Slot" icon-name="standard:lightning_component">
+        <div>
+            <template for:each={rooms} for:item="room">
+                <c-meeting-room-slot key={room.roomNumber}>
+                    <lightning-tile label={room.roomNumber} href="/path/to/somewhere" slot="room">
+                        <p class="slds-truncate" title={room.capacity}>Room Capacity: {room.capacity}</p>
+                        <p class="slds-truncate" title={room.resources}>Resources: {room.resources}</p>
+                    </lightning-tile>
+                    <div>I am an unnamed slot</div>
+                </c-meeting-room-slot>
+            </template>
+        </div>
+        <c-view-source source="lwc/meetingRoomsSlot" slot="footer">
+            Refer to the meetingRoomSlot component that is referenced in this component
+        </c-view-source>
+    </lightning-card>
+</template>

@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="Calculator" icon-name="standard:apps">
+        <div class="calculator">
+            <table cellpadding="1" cellspacing="1" class="tbSpace">
+                <tr>
+                    <td colspan="4">
+                            <lightning-input type="text" value={currentValue} class="input-text-align_right"></lightning-input>
+                    </td>
+                </tr>
+                <tr>
+                <template for:each={row1} for:item="col">
+                        <td key={col}>
+                            <lightning-button data-index={col} label={col} class="slds-button slds-button_stretch" onclick={handleClick} variant="success"></lightning-button>
+                        </td>
+                </template>
+                </tr>
+                <tr>
+                <template for:each={row2} for:item="col">
+                        <td key={col}>
+                            <lightning-button data-index={col} label={col} class="slds-button slds-button_stretch" onclick={handleClick} variant="success"></lightning-button>
+                        </td>
+                    </template>
+                </tr>
+                <tr>
+                    <template for:each={row3} for:item="col">
+                        <td key={col}> 
+                            <lightning-button data-index={col} label={col} class="slds-button slds-button_stretch" onclick={handleClick} variant="success"></lightning-button>
+                        </td>
+                    </template>
+                </tr>
+                <tr>
+                    <template for:each={row4} for:item="col">
+                        <td key={col}>
+                            <lightning-button data-index={col} label={col} class="slds-button slds-button_stretch" onclick={handleClick} variant="success"></lightning-button>
+                        </td>
+                    </template>
+                </tr>
+            </table>
+        </div>
+        <c-view-source source="lwc/calculator" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>

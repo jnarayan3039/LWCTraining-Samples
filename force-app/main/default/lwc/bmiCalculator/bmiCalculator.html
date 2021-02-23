@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="BMI Calculator" icon-name="standard:lightning_component">
+        <div>
+            <lightning-input label="Enter Height" name="height" onchange={handleHeightChange}></lightning-input>
+            <lightning-input label="Enter Weight" name="weight" onchange={handkeWeightChange}></lightning-input>
+            <lightning-button label="Calculate BMI" onclick={handleCalc}></lightning-button>
+        </div>
+        <div>{bmi}</div>
+        <c-view-source source="lwc/bmiCalculator" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>

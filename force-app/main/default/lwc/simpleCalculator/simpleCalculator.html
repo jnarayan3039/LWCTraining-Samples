@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Simple Calculator" icon-name="utility:apps">
+        <div>
+            <lightning-layout multiple-rows>
+                <lightning-layout-item size="6">
+                    <lightning-input type="number" name="firstNumber" label="First Number" onchange={handleChange} class="firstNumber"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="6">
+                    <lightning-input type="number" name="secondNumber" label="Second Number" onchange={handleChange} class="lastNumber"></lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <lightning-button-group>
+                        <lightning-button label="Addition" icon-name="utility:add" onclick={handleAddition}></lightning-button>
+                        <lightning-button label="Substraction" icon-name="utility:dash" onclick={handleSubstraction}></lightning-button>
+                        <lightning-button label="Multiplication" icon-name="utility:close" onclick={handleMultiplication}></lightning-button>
+                        <lightning-button label="Division" icon-name="utility:magicwand" onclick={handleDivision}></lightning-button>
+                    </lightning-button-group>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <lightning-formatted-text value={result}></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <lightning-input type="checkbox" label="Show Values" onchange={handleShowValues}></lightning-input>
+                    <template if:true={isShowValueSelected}>
+                        <ul>
+                            <template for:each={operationsPerformed} for:item="result">
+                                <li key={result}>{result}</li>
+                            </template>
+                        </ul>
+                    </template>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+        <c-view-source source="lwc/simpleCalculator" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>

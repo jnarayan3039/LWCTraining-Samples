@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Rendering Lists" icon-name="standard:lightning_component">
+        <div>
+            <lightning-card title="HTML For Each" icon-name="utility:loop">
+                <ol type="I">
+                    <template for:each={countries} for:item="country">
+                        <li key={country}>{country}</li>
+                    </template>
+                </ol>
+            </lightning-card>
+            <lightning-card title="Iterator" icon-name="utility:loop">
+                <ul>
+                    <template iterator:it={countries} >
+                        <li key={it.value}>
+                            <div  if:true={it.first} class="first-item" ></div>
+                                {it.value}
+                            <div if:true={it.last} class="last-item"></div>
+                        </li>
+                    </template>
+                </ul>
+            </lightning-card>
+            
+         </div>
+         <c-view-source source="lwc/renderList" slot="footer">
+         </c-view-source>
+    </lightning-card>
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Images from Static Resources" icon-name="standard:lightning_component">
+        <div>
+            <template for:each={imageData} for:item="image">
+                <img key={image} src={image}>
+            </template>
+        </div>
+        <c-view-source source="lwc/staticResourceSample" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>
