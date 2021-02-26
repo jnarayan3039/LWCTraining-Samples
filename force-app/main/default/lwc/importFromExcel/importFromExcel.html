@@ -14,23 +14,19 @@
        <lightning-input type="file" name="uploadFile" label="Upload File" onchange={handleFileUploaded}>
 
        </lightning-input>
-       <table class="dynamic">
-
-       </table>
         <table>
             <tr class="header">
-                <th>Day</th>
-                <th>Sub Topic</th>
-                <th>Youtube Video</th>
+                <template for:each={fileHeaders} for:item="header">
+                    <th key={header}>{header}</th>
+                </template>
             </tr>
-            <template for:each={videos} for:item="video">
-                <tr key={video.YoutubeVideo}>
-                    <td>{video.Day}</td>
+             <template for:each={videos} for:item="video">
+                 <tr key={video.YoutubeVideo}>
+                     <td>{video.Day}</td>
                      <td>{video.SubTopic}</td>
-                     <td><a class="slds-text-link" href={video.YoutubeVideo} target="source">View Source</a></td>   
-                </tr>
-                    
-            </template>
+                     <td><a class="slds-text-link" href={video.YoutubeVideo} target="source">View Source</a></td>  
+                </tr> 
+            </template> 
         </table>
     </div>
     <c-view-source source="lwc/importFromExcel" slot="footer">

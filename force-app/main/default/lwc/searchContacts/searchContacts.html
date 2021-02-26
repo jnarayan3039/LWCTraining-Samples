@@ -1,0 +1,27 @@
+<template>
+    <lightning-card title="Search Contacts" icon-name="standard:lightning_component">
+        <div>
+            <lightning-input type="text" label="Enter the Name of Contact" onchange={handleTextChange}></lightning-input>
+            <template if:true={contacts.data}>
+                <table>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                    </tr>
+                
+                        <template for:each={contacts.data} for:item="contact">
+                            <tr key={contact.id}>
+                                <td>{contact.FirstName}</td>
+                                <td>{contact.LastName}</td>
+                                <td>{contact.Email}</td>
+                            </tr>
+                    
+                    </template>
+                </table>
+            </template>
+        </div>
+        <c-view-source source="lwc/searchContacts" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>

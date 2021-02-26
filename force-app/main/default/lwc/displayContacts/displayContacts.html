@@ -4,7 +4,6 @@
             <template for:each={contactsToDisplay} for:item="contact">
                 <c-contact-info key={contact.email} contact={contact}></c-contact-info>
             </template>
-            
             <c-paginator onprevious={previousHandler} onnext={nextHandler}></c-paginator>
         </div>
         <c-view-source source="lwc/displayContacts" slot="footer">

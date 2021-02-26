@@ -6,7 +6,7 @@ export default class SnakeGame extends LightningElement {
     highScore = 0;
 
     blockSize = 20;
-
+    localStorage;
     @track gameBlocks = [];
 
     renderComplete = false;
@@ -29,7 +29,7 @@ export default class SnakeGame extends LightningElement {
     intervalObj;
 
     connectedCallback(){
-        this.highScore = localStorage.getItem('lwc_snake_high')?locakStorage.getItem('lwc_snake_high'):0;
+            this.highScore = localStorage.getItem('lwc_snake_high')?localStorage.getItem('lwc_snake_high'):0;
     }
 
     disconnectedCallback(){

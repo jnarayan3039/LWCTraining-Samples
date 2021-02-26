@@ -1,7 +1,7 @@
 /*eslint no-console: “error”*/
 import { LightningElement, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { loadScript, loadStyle } from 'lightning/platformResourceLoader';
+import { loadScript } from 'lightning/platformResourceLoader';
 import JSUtility from '@salesforce/resourceUrl/js';
 const columns = [
     { label: 'Topic', fieldName: 'Topic' },
@@ -21,7 +21,7 @@ export default class ImportFromExcel extends LightningElement {
     jsUtilityInitialized = false;
     fileName;
     disabled;
-
+    @track fileHeaders = [];
     connectedCallback(){
         this.initXL();
     }
@@ -42,6 +42,7 @@ export default class ImportFromExcel extends LightningElement {
                 .then((excelFile) => {
                     var yVideos = excelFile.xlsx;
                     this.videos = JSON.parse(yVideos);
+                    this.fileHeaders = excelFile.headers;
                     //this.pooulateTable(this.videos)
                 })
                 .catch((exceptionMessage) => {
@@ -65,10 +66,16 @@ export default class ImportFromExcel extends LightningElement {
             loadScript(this, JSUtility + '/JSUtilities/xlsx.js')
         ])
         .then(()=>{
-            
+            this.jsUtilityInitialized = true;
         })
         .catch(error => {
-            console.log("Error" + error);
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error loading JSUtility',
+                    message: error.message,
+                    variant: 'error'
+                })
+            );
         });
     }
 
@@ -108,12 +115,29 @@ export default class ImportFromExcel extends LightningElement {
             type: 'binary'
             });
             try{
+                var headers = [];
+                var sheet = workbook.Sheets[workbook.SheetNames[0]];
+                var range = XLSX.utils.decode_range(sheet['!ref']);
+                var C, R = range.s.r; /* start in the first row */
+                /* walk every column in the range */
+                for(C = range.s.c; C <= range.e.c; ++C) {
+                    var cell = sheet[XLSX.utils.encode_cell({c:C, r:R})] /* find the cell in the first row */
+        
+                    var hdr = "UNKNOWN " + C; // <-- replace with your desired default 
+                    if(cell && cell.t) hdr = XLSX.utils.format_cell(cell);
+        
+                    headers.push(hdr);
+                }
+                 console.log(headers);
                  resolve({
                      "fileName": "fileName",
-                     "xlsx" : JSON.stringify(XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]]))
+                     "xlsx" : JSON.stringify(XLSX.utils.sheet_to_row_object_array(workbook.Sheets[workbook.SheetNames[0]])),
+                     "headers": headers
                  });
+
             }catch(error){
                 reject(error);
+                console.log(error);
             }
         };
     
@@ -124,4 +148,23 @@ export default class ImportFromExcel extends LightningElement {
         reader.readAsBinaryString(file);
         });
     }
+
+    getHeaderRow(sheet){
+        console.log("inside header row"+sheet);
+        var headers = [];
+        var range = XLSX.utils.decode_range(sheet['!ref']);
+        var C, R = range.s.r; /* start in the first row */
+        /* walk every column in the range */
+        for(C = range.s.c; C <= range.e.c; ++C) {
+            var cell = sheet[XLSX.utils.encode_cell({c:C, r:R})] /* find the cell in the first row */
+
+            var hdr = "UNKNOWN " + C; // <-- replace with your desired default 
+            if(cell && cell.t) hdr = XLSX.utils.format_cell(cell);
+
+            headers.push(hdr);
+        }
+        return headers;
+    }
+    
 }
+

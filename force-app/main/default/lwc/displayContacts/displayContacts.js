@@ -1,11 +1,14 @@
-import { LightningElement,track } from 'lwc';
-
+import { LightningElement,track, wire } from 'lwc';
 export default class DisplayContacts extends LightningElement {
-    
     page=1;
     startIndex= 0;
     endIndex = 3;
     count = 3;
+    error;
+    displayPanel = false;
+    @track contactsToDisplay = [];
+    // data - data 
+    // error - error information
     contacts=[
         {
             firstName: 'Jayaprakash',
@@ -94,15 +97,15 @@ export default class DisplayContacts extends LightningElement {
         },
     ];
 
-    @track contactsToDisplay = [];
+   
 
     constructor(){
         super();
-        // this.contactsToDisplay = this.contacts.filter(contact=>{
-        //     return this.contacts.indexOf(contact)>=this.startIndex && this.contacts.indexOf(contact)<this.endIndex;
-        //  });
-         this.contactsToDisplay = this.contacts.slice(this.startIndex, this.endIndex);
+        this.contactsToDisplay = this.contacts.slice(this.startIndex, this.endIndex);
+         
     }
+
+    
 
     previousHandler(event) {
         if (this.page > 1) {
@@ -130,4 +133,6 @@ export default class DisplayContacts extends LightningElement {
          this.contactsToDisplay = this.contacts.slice(this.startIndex, this.endIndex);
          
     }
+
+    
 }

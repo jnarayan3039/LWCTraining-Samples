@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Account Related Information" icon-name="standard:lightning_component">
+        <div>
+            <lightning-input label="Enter Account Name" class="search"></lightning-input>
+            <lightning-button label="Get Account Information" onclick={setSearchString}></lightning-button>
+            
+            <template if:true={account}>
+                <lightning-accordion active-section-name="A">
+                    <template for:each={account} for:item="acc">
+                        <lightning-accordion-section name="A" key={acc.Id} label={acc.Name}>
+                            <lightning-accordion active-section-name={activeSections} allow-multiple-sections-open>
+                                <lightning-accordion-section name="Contacts" label="Contacts">
+                                    <lightning-datatable key-field={id} data={acc.Contacts} columns={conColumns}>
+
+                                    </lightning-datatable>
+                                </lightning-accordion-section>
+                                   <lightning-accordion-section name="Opportunities" label="Opportunities">
+                                    <lightning-datatable key-field={id} data={acc.Opportunities} columns={opptyColumns}>
+
+                                    </lightning-datatable>
+                               </lightning-accordion-section>
+                                </lightning-accordion>
+                        </lightning-accordion-section>
+                    </template> 
+                </lightning-accordion>  
+            </template>
+        </div>
+        <c-view-source source="lwc/accountDataDisplay" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>
