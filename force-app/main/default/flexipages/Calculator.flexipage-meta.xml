@@ -5,12 +5,16 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        
+        <componentInstances>
+            <componentName>calculator</componentName>
+        </componentInstances>
         <name>region2</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        
+        <componentInstances>
+            <componentName>simpleCalculator</componentName>
+        </componentInstances>
         <name>region3</name>
         <type>Region</type>
     </flexiPageRegions>
