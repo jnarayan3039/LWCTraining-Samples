@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Apex Imperative Method Call" icon-name="custom:custom63">
+        <div class="slds-m-around_medium">
+            <p class="slds-m-buttom_small">
+                <lightning-button label="Load Contacts" onclick={handleClick}>
+
+                </lightning-button>
+            </p>
+            <template if:true={contacts}>
+                <template for:each={contacts} for:item="contact">
+                    <p key={contact.id}>{contact.FirstName}</p>
+                </template>
+            </template>
+            <template if:true={error}>
+                No Record Found
+            </template>
+        </div>
+        <c-view-source source="lwc/apexImperativeMethod" slot="footer">
+        </c-view-source>
+    </lightning-card>
+</template>

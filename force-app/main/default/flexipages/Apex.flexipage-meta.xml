@@ -4,12 +4,18 @@
         <componentInstances>
             <componentName>searchContacts</componentName>
         </componentInstances>
+        <componentInstances>
+            <componentName>displayOpportunities</componentName>
+        </componentInstances>
         <name>column1</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <componentInstances>
             <componentName>accountDataDisplay</componentName>
+        </componentInstances>
+        <componentInstances>
+            <componentName>apexImperativeMethod</componentName>
         </componentInstances>
         <name>column2</name>
         <type>Region</type>

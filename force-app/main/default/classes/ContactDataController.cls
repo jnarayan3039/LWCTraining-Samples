@@ -10,6 +10,11 @@ public inherited sharing class ContactDataController {
         
     }
 
+    @AuraEnabled
+    public static List<Contact> getContactList(){
+        return [SELECT id, FirstName, LastName, Email from Contact limit 20];
+    }
+
     @AuraEnabled(cacheable=true)
     public static List<Contact> getContactsData(string name){
         string searchString = '%'+name+'%';
